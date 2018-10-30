@@ -59,7 +59,7 @@ urlpatterns = [
   url(r'^$', views.BookmarkLV.as_view(), name='index'),
   # /bookmark/숫자/ 요청을 처리할 뷰 클래스를 BookmarkDV로 지정하고, URL 패턴 이름 지정
   # url(r'^bookmark/(?P<pk>\d+)/$', views.BookmarkDV.as_view(), name='detail'),
-  url(r'^(?P<pk>\d+)/$', views.BookmarkDV.as_view(), name='detail'),
+  url(r'^bookmark/(?P<pk>\d+)/$', views.BookmarkDV.as_view(), name='detail'),
   # tabular list
   # url(r'^bookmark_t_FBV/$', views.tabularBookmark, name='index_t_FBV'),
   # url 패턴 매칭을 '/' 단위로 처리하기 위하여 아래와 같이 수정
