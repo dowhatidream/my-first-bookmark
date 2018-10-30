@@ -1,6 +1,6 @@
 {% extends "base.html" %}                   <!--base.html을 상속받는다고 선언-->
 
-{% block title %}home.html{% endblock %}    <!--title 블록 재정의-->
+{% block title %}홈{% endblock %}    <!--title 블록 재정의-->
 
 <!--정적 파일인 css 연결하기 위하여, staticfiles를 로드-->
 {% load staticfiles %}
@@ -14,7 +14,7 @@
   <div id="homeimg">      <!--homeimg 영역 정의-->
       <!--<a href="/"><img src="{% static 'img/django-actor-big.jpg' %}" style="height:256px;"/></a>-->
       <a href="/"><img src="{% static 'img/django2.jpg' %}" style="height:256px;"/></a>
-      <h4 style="margin: 0;">장고 프레임워크로 개발한 웹 사이트!</h4>
+      <h4 style="margin: 0;">장고 프레임워크로 개발한 웹 사이트입니다.</h4>
   </div>
 
   <hr style="margin: 5px 0;">     <!--그림 및으로 5px 간격을 두고 수평선 넣기-->
@@ -23,24 +23,24 @@
 
   <table id="applist">
       <tr>
-      <td><b><i><a href="#">책갈피</a></i><b></td>
-      <td>당신의 책갈피를 등록하고 다른 사람들과 공유할 수 있습니다. 어쩌구 저쩌구. 중얼중얼.</td>
-      <td id="Edit"><i><a href="#">등록</a></i></td>
-      <td id="Edit"><i><a href="#">편집</a></i></td>
+          <td><b><i><a href="#">책갈피</a></i></b></td>
+          <td>당신의 책갈피를 등록하고 다른 사람들과 공유할 수 있습니다. 어쩌구 저쩌구. 중얼중얼.</td>
+          <td id="Edit"><i><a href="#">등록</a></i></td>
+          <td id="Edit"><i><a href="#">편집</a></i></td>
       </tr>
 
       <tr>
-      <td><b><i><a href="#">게시판</a></i><b></td>
-      <td>당신의 게시물을 등록하고 다른 사람들과 공유할 수 있습니다. 어쩌구 저쩌구.</td>
-      <td id="Edit"><i><a href="#">등록</a></i></td>
-      <td id="Edit"><i><a href="#">편집</a></i></td>
+          <td><b><i><a href="#">게시판</a></i></b></td>
+          <td>당신의 게시물을 등록하고 다른 사람들과 공유할 수 있습니다. 어쩌구 저쩌구.</td>
+          <td id="Edit"><i><a href="#">등록</a></i></td>
+          <td id="Edit"><i><a href="#">편집</a></i></td>
       </tr>
 
       <tr>
-      <td><b><i><a href="#">사진첩</a></i><b></td>
-      <td>당신의 사진을 등록하고 다른 사람들과 공유할 수 있습니다. 어쩌구 저쩌구.</td>
-      <td id="Edit"><i><a href="#">등록</a></i></td>
-      <td id="Edit"><i><a href="#">편집</a></i></td>
+          <td><b><i><a href="#">사진첩</a></i></b></td>
+          <td>당신의 사진을 등록하고 다른 사람들과 공유할 수 있습니다. 어쩌구 저쩌구.</td>
+          <td id="Edit"><i><a href="#">등록</a></i></td>
+          <td id="Edit"><i><a href="#">편집</a></i></td>
       </tr>
   </table>
 </div>

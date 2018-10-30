@@ -30,7 +30,7 @@ div#menu {
 div#content {
   position: absolute;
   top: 70px;
-  left: 50px; /*마치 마진처럼*/
+  left: 50px;
   right: 50px;
 }
 
@@ -76,7 +76,7 @@ div#menu > li {
   display: table-cell;
   vertical-align: middle;
   border: 2px solid #bbb;
-  border-radius: 5px; /*메뉴 둥근 사각형 만들기*/
+  border-radius: 15px; /*메뉴 둥근 사각형 만들기*/
   text-align: center;
   font-weight: bold;
 }
