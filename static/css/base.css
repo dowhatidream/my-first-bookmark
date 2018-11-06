@@ -1,6 +1,6 @@
 body {
-  font-family: 'Nanum Pen Script', cursive;
-  font-size: 12px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 15px;
 }
 
 /* PAGE STRUCTURE */
@@ -24,7 +24,7 @@ div#menu {
   table-layout: fixed;
   border-spacing: 40px 0px;
   background: #E0E6F8;
-  font-size: 8px;
+  font-size: 10px;
 }
 
 div#content {
@@ -50,7 +50,7 @@ div#footer {
   padding-left: 20px; /*마진은 바깥 패딩은 안*/
   color: #ffffff;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .welcome {
