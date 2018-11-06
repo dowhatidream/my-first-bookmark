@@ -1,5 +1,5 @@
 body {
-  font-family: "Lucida Grande", Verdana, Arial, sans-serif;
+  font-family: 'Nanum Pen Script', cursive;
   font-size: 12px;
 }
 
@@ -18,7 +18,7 @@ div#menu {
   position: absolute;
   top: 30px;
   left: 0px;
-  height: 20px;
+  height: 30px;
   width: 100%;
   display: table;
   table-layout: fixed;
@@ -119,5 +119,4 @@ td, th {
   border-bottom: 1px solid #eee;
   vertical-align: top;
   padding: 5px 15px;
-  font-family: "Lucida Grande", Verdana, Arial, sans-serif;
 }

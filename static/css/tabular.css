@@ -1,0 +1,45 @@
+#tbl {
+    font-family: 'Nanum Pen Script', cursive;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
+#tbl td, #tbl th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tbl tr:nth-child(even){background-color: #ffffff;}
+
+#tbl tr:hover {background-color: #EFF2FB;}
+
+#tbl th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #5858FA;
+    color: white;
+}
+
+#tt {
+    text-align: center;
+}
+
+
+a:link {
+    text-align: center;
+    text-decoration: none;
+    color: #5858FA;
+}
+a:hover {
+
+}
+a:visited{
+
+}
+.centered {
+    text-align: center;
+}
+.leftpadding30percent { padding-left: 30%; }
