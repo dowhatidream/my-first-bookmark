@@ -32,20 +32,20 @@ urlpatterns = [
     # Example: /archive/
     url(r'^archive/$', PostAV.as_view(), name='post_archive'),
 
-    # Example: /2012/
+    # Example: /2012/     # 이 주소 안 됨
     url(r'^(?P<year>\d{4})/$', PostYAV.as_view(), name='post_year_archive'),
 
-    # # Example: /2012/nov/
+    # # Example: /2012/nov/   # 됨 근데 어떻게 들어가는지 모름
     url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$', PostMAV.as_view(), name='post_month_archive'),
     # # Example: /2012/11/
     # url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$', PostMAV.as_view(), name='post_month_archive'),
 
-    # # Example: /2012/nov/10/
+    # # Example: /2012/nov/10/    # 됨 근데 어떻게 들어가는지 모름
     url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\d{1,2})/$', PostDAV.as_view(), name='post_day_archive'),
     # # Example: /2012/11/10/
     # url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$', PostDAV.as_view(), name='post_day_archive'),
 
-    # Example: /today/
+    # Example: /today/      # 됨 근데 어떻게 들어가는지 모름
     url(r'^today/$', PostTAV.as_view(), name='post_today_archive'),
 
     # /blog/tag/ URL 요청을 처리할 뷰 클래스 지정, 태그 클라우드 출력용 뷰

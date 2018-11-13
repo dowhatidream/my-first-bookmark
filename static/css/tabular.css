@@ -8,7 +8,7 @@
 #tbl td, #tbl th {
     border: 1px solid #ddd;
     padding: 8px;
-    width: 50px;
+    width: 60px;
 }
 
 #tbl tr:nth-child(even){
