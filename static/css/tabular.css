@@ -1,5 +1,4 @@
 #tbl {
-    font-family: 'Nanum Myeongjo', serif;
     border-collapse: collapse;
     width: 50%;
     margin: auto;
@@ -9,11 +8,16 @@
 #tbl td, #tbl th {
     border: 1px solid #ddd;
     padding: 8px;
+    width: 50px;
 }
 
-#tbl tr:nth-child(even){background-color: #ffffff;}
+#tbl tr:nth-child(even){
+    background-color: #ffffff;
+}
 
-#tbl tr:hover {background-color: #EFF2FB;}
+#tbl tr:hover {
+    background-color: #EFF2FB;
+}
 
 #tbl th {
     padding-top: 12px;
@@ -42,4 +46,6 @@ a:visited{
 .centered {
     text-align: center;
 }
-.leftpadding30percent { padding-left: 30%; }
+.leftpadding30percent {
+    padding-left: 30%;
+}
