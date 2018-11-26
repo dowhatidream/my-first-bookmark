@@ -10,3 +10,8 @@ class PostSearchForm(forms.Form):
     # 변수 search_word는 입력 필드에 대한 id 역할
     search_word = forms.CharField(label='검색어')
 # ch09 1/1 추가 종료
+
+    search_title = forms.CharField(label='제목 검색어')
+    search_description = forms.CharField(label='요약 검색어')
+    search_content = forms.CharField(label='내용 검색어')
+    search_tag = forms.CharField(label='태그 검색어')

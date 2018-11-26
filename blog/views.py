@@ -80,26 +80,66 @@ class PostTAV(TodayArchiveView) :
     # 이를 템플릿에 전달함
 
 
-# FormView를 상속받아 SearchFormView 작성
-# FormView는 GET 요청인 경우 폼을 화면에 보여주고 사용자 입력을 대기함
-# 사용자가 폼에 데이터 입력 후 제출하면 이는 POST 요청으로 접수되고
-# 입력 데이터에 대한 유효성 검사를 실시하여 유효하면
-# form_valid() 함수를 실행한 후 적절한 URL로 리다이렉트 처리함
+# # FormView를 상속받아 SearchFormView 작성
+# # FormView는 GET 요청인 경우 폼을 화면에 보여주고 사용자 입력을 대기함
+# # 사용자가 폼에 데이터 입력 후 제출하면 이는 POST 요청으로 접수되고
+# # 입력 데이터에 대한 유효성 검사를 실시하여 유효하면
+# # form_valid() 함수를 실행한 후 적절한 URL로 리다이렉트 처리함
+# class SearchFormView(FormView):
+#     form_class = PostSearchForm             # 폼으로 사용할 클래스를 지정
+#     template_name = 'blog/post_search.html' # 템플릿 지정
+#
+#     # 입력 데이터에 대한 유효성 검사를 실시하여 유효하면 실행될 함수
+#     def form_valid(self, form) :
+#         # POST 요청의 id가 'search_word'인 값을 추출하여 변수에 저장
+#         schWord = '%s' % self.request.POST['search_word']
+#         # filter() 메소드의 매칭 조건을 Q 객체로 다양하게 지정 가능함
+#         # 각 조건에서 icontains 연산자는 대소문자 구별 없이
+#         # 검색어가 포함되었는지 검사
+#         # distinct() 메소드는 중복된 객체를 제외함
+#         # 결국, Post 테이블의 모든 레코드에 대하여
+#         # title, description, content, tag 필드에
+#         # schWord가 포함된 레코드를 대소문자 구별 없이 검색해서 중복 없는 리스트로 저장
+#         post_list = Post.objects.filter(
+#             Q(title__icontains=schWord) |
+#             Q(description__icontains=schWord) |
+#             Q(content__icontains=schWord) |
+#             Q(tag__icontains=schWord)
+#         ).distinct()
+#
+#         # 템플릿에 전달할 맥락 변수 context를 사전 형식으로 정의
+#         context = {}
+#         context['form'] = form  # 여기서 form은 PostSearchForm을 지칭함
+#         context['search_term'] = schWord
+#         context['object_list'] = post_list
+#
+#         # 단축 함수 render()는 템플릿과 맥락 변수를 처리하여,
+#         # 최종적으로 HttpResponse 객체를 반환
+#         # 일반적으로 form_valid() 함수는 리다이렉트 처리를 위하여
+#         # HttpResponseRedirect 객체를 반환하는데,
+#         # 여기서는 render() 함수가 HttpResponse 객체를 반환하므로
+#         # 리다이렉트 처리가 되지 않게됨.
+#         return render(self.request, self.template_name, context)
+#     # ch09 추가 1/1 종료
+
+
+
+
+
+
 class SearchFormView(FormView):
     form_class = PostSearchForm             # 폼으로 사용할 클래스를 지정
     template_name = 'blog/post_search.html' # 템플릿 지정
 
     # 입력 데이터에 대한 유효성 검사를 실시하여 유효하면 실행될 함수
     def form_valid(self, form) :
-        # POST 요청의 id가 'search_word'인 값을 추출하여 변수에 저장
         schWord = '%s' % self.request.POST['search_word']
-        # filter() 메소드의 매칭 조건을 Q 객체로 다양하게 지정 가능함
-        # 각 조건에서 icontains 연산자는 대소문자 구별 없이
-        # 검색어가 포함되었는지 검사
-        # distinct() 메소드는 중복된 객체를 제외함
-        # 결국, Post 테이블의 모든 레코드에 대하여
-        # title, description, content, tag 필드에
-        # schWord가 포함된 레코드를 대소문자 구별 없이 검색해서 중복 없는 리스트로 저장
+        # 각 필드 별로 유효성 검사를 할 수 있도록 4개 추가함
+        schTitle = '%s' % self.request.POST['search_title']
+        schDescription = '%s' % self.request.POST['search_description']
+        schContent = '%s' % self.request.POST['search_content']
+        schTag = '%s' % self.request.POST['search_tag']
+        # 전체 검색할 때(schWord)
         post_list = Post.objects.filter(
             Q(title__icontains=schWord) |
             Q(description__icontains=schWord) |
@@ -107,18 +147,49 @@ class SearchFormView(FormView):
             Q(tag__icontains=schWord)
         ).distinct()
 
-        # 템플릿에 전달할 맥락 변수 context를 사전 형식으로 정의
+        # 빈 리스트를 하나 생성하여 집어넣기
+        post_list_new = []
+
+        # 제목에서 검색할 때
+        if schTitle:
+            post_list_new += Post.objects.filter(
+                Q(title__icontains=schTitle)
+            ).distinct()
+
+        # 요약에서 검색할 때
+        if schDescription:
+            post_list_new += Post.objects.filter(
+                Q(description__icontains=schDescription)
+            ).distinct()
+
+        # 내용에서 검색할 때
+        if schContent:
+            post_list_new += Post.objects.filter(
+                Q(content__icontains=schContent)
+            ).distinct()
+
+        # 태그에서 검색할 때
+        if schTag:
+            post_list_new += Post.objects.filter(
+                Q(tag__icontains=schTag)
+            ).distinct()
+
+
         context = {}
         context['form'] = form  # 여기서 form은 PostSearchForm을 지칭함
         context['search_term'] = schWord
         context['object_list'] = post_list
 
-        # 단축 함수 render()는 템플릿과 맥락 변수를 처리하여,
-        # 최종적으로 HttpResponse 객체를 반환
-        # 일반적으로 form_valid() 함수는 리다이렉트 처리를 위하여
-        # HttpResponseRedirect 객체를 반환하는데,
-        # 여기서는 render() 함수가 HttpResponse 객체를 반환하므로
-        # 리다이렉트 처리가 되지 않게됨.
+        # 템플릿에 전달할 맥락 변수 context를 사전 형식으로 정의
+        context['search_title'] = schTitle
+        context['search_description'] = schDescription
+        context['search_content'] = schContent
+        context['search_tag'] = schTag
+        
+        # 리스트에 담아놓은 내용을 바탕으로 비교
+        context['post_list_new'] = post_list_new
+
         return render(self.request, self.template_name, context)
-    # ch09 추가 1/1 종료
+
+
 
