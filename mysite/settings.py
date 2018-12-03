@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'tagging.apps.TaggingConfig',       # (ch07) tagging 앱을 추가 등록
     'disqus',                           # (ch08) 1/4
     'django.contrib.sites',             # (ch08) 2/4
+    'photo.apps.PhotoConfig',                  # (ch10) 1/1
 ]
 
 DISQUS_WEBSITE_SHORTNAME = 'dowhatidream'   # (ch08) 3/4 [Website Name]
@@ -132,4 +133,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # 이것 때문에 css 파일을 static 이라는 디렉토리 파일로 만듦 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = [os.path.join(BASE_DIR, 'media')]
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')

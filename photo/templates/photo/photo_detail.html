@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}photo_detail.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "photo/photo.css" %}{% endblock %}
+
+{% block content %}
+<div id="content">
+
+
+    <p class="other_posts">
+              {% if object.get_previous_photo %}
+                  <a href="{{ object.get_previous_photo.get_absolute_url }}" title="View previous photo">
+                      &laquo;-- {{ object.get_previous_photo }}
+                  </a>
+              {% else %}
+                    첫 사진
+              {% endif %}
+                &nbsp;&nbsp; | &nbsp;&nbsp;
+              {% if object.get_next_photo %}
+
+                  <a href="{{ object.get_next_photo.get_absolute_url }}" title="View next photo">
+                      {{ object.get_next_photo }} --&raquo;
+                  </a>
+              {% else %}
+                    끝 사진
+              {% endif %}
+    </p>
+
+
+    <h2  class="title">{{ object.title }}</h2>
+    <table class="photo-detail">
+        <tr>
+            <td>
+            <a href="{{ object.image.url }}">
+                <img class="img" style="max-width:100%" src="{{ object.image.url }}" />
+            </a>
+            </td>
+            <td>
+            <ul>
+                <h3>설명</h3>
+                {% if object.description %}
+                    <p>{{ object.description|linebreaks }}</p>
+                {% else %}
+                    <p>(blank)</p>
+                {% endif %}
+                <br>
+                <h3>등록 일시</h3>
+                <p>{{ object.upload_date }}</p>
+                <!--https://docs.djangoproject.com/en/dev/ref/templates/builtins/?from=olddocs-->
+                <br>
+                <h3>앨범</h3>
+                <p><a href="{% url 'photo:album_detail' object.album.id %}">{{ object.album.name }}</a></p>
+            </ul>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<h2 class="title">{{ object.title }}</h2>-->
+    <!--<table class="photo-detail">-->
+        <!--<tr>-->
+            <!--<td>-->
+                <!--<a href="{{ object.image.url }}">-->
+                    <!--<img class="img" style="max-width:100%" src="{{ object.image.url }}" />-->
+                <!--</a>-->
+            <!--</td>-->
+            <!--<td>-->
+                <!--<ul>-->
+                    <!--<li>설명</li>-->
+                    <!--{% if object.description %}-->
+                        <!--<p>{{ object.description|linebreaks }}</p>-->
+                    <!--{% else %}-->
+                        <!--<p>(blank)</p>-->
+                    <!--{% endif %}-->
+                    <!--<li>등록 일시</li>-->
+                    <!--<p>{{ object.upload_date }}</p>-->
+                    <!--&lt;!&ndash;https://docs.djangoproject.com/en/dev/ref/templates/builtins/?from=olddocs&ndash;&gt;-->
+                    <!--<li>앨범</li>-->
+                    <!--<p><a href="{% url 'photo:album_detail' object.album.id %}">{{ object.album.name }}</a></p>-->
+                <!--</ul>-->
+            <!--</td>-->
+        <!--</tr>-->
+    <!--</table>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}
